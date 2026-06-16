@@ -1,0 +1,327 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f7fb;
+  color: #1f2933;
+  line-height: 1.6;
+}
+
+/* ACCESSIBILITY */
+
+.skip-link {
+  position: absolute;
+  top: -50px;
+  left: 1rem;
+  background-color: white;
+  color: #003c71;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+a:focus-visible,
+.timeline-card:focus-visible {
+  outline: 4px solid #f7c600;
+  outline-offset: 4px;
+}
+
+/* HERO SECTION */
+
+.hero {
+  min-height: 80vh;
+  background:
+    linear-gradient(rgba(0, 104, 181, 0.88), rgba(0, 49, 83, 0.9)),
+    url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 2rem 6%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  border: 2px solid white;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  background-color: white;
+  color: #0068b5;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: #7ed3f7;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 650px;
+}
+
+/* INTRO */
+
+.intro {
+  padding: 4rem 6%;
+  text-align: center;
+  background-color: white;
+}
+
+.intro h2 {
+  font-size: 2.2rem;
+  color: #0068b5;
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* TIMELINE */
+
+.timeline-section {
+  padding: 4rem 6%;
+}
+
+.timeline-section h2 {
+  font-size: 2.3rem;
+  color: #0068b5;
+  margin-bottom: 0.5rem;
+}
+
+.section-text {
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
+.timeline {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0 2rem;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+}
+
+.timeline::-webkit-scrollbar {
+  height: 10px;
+}
+
+.timeline::-webkit-scrollbar-track {
+  background-color: #dbeafe;
+  border-radius: 999px;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background-color: #0068b5;
+  border-radius: 999px;
+}
+
+.timeline-card {
+  flex: 0 0 320px;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 6px solid #00a3e0;
+  cursor: pointer;
+}
+
+.timeline-card:hover,
+.timeline-card:focus-within,
+.timeline-card:focus-visible {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 16px 35px rgba(0, 104, 181, 0.25);
+}
+
+.timeline-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  padding: 1.4rem;
+}
+
+.year {
+  display: inline-block;
+  background-color: #0068b5;
+  color: white;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.timeline-card h3 {
+  color: #003c71;
+  margin-bottom: 0.7rem;
+  font-size: 1.3rem;
+}
+
+.short-text {
+  margin-bottom: 1rem;
+}
+
+.details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: #4b5563;
+  border-top: 1px solid #dbeafe;
+  transition: max-height 0.4s ease, opacity 0.4s ease, padding-top 0.4s ease;
+}
+
+.timeline-card:hover .details,
+.timeline-card:focus-within .details,
+.timeline-card:focus-visible .details {
+  max-height: 180px;
+  opacity: 1;
+  padding-top: 1rem;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #003c71;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .timeline-card:hover,
+  .timeline-card:focus-within,
+  .timeline-card:focus-visible {
+    transform: none;
+  }
+}
+
+/* MOBILE RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 70vh;
+    padding: 1.5rem 5%;
+  }
+
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .hero-content {
+    margin-top: 4rem;
+  }
+
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .intro,
+  .timeline-section {
+    padding: 3rem 5%;
+  }
+
+  .timeline {
+    flex-direction: column;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+
+  .timeline-card {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .details {
+    max-height: none;
+    opacity: 1;
+    padding-top: 1rem;
+  }
+
+  .timeline-card:hover,
+  .timeline-card:focus-within,
+  .timeline-card:focus-visible {
+    transform: none;
+  }
+}

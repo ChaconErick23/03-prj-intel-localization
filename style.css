@@ -103,6 +103,10 @@ select:focus-visible,
   color: #0068b5;
 }
 
+.visually-hidden-control {
+  display: none;
+}
+
 .hero-content {
   max-width: 800px;
   margin-top: auto;

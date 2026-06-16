@@ -35,6 +35,9 @@ body {
 }
 
 a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
 .timeline-card:focus-visible {
   outline: 4px solid #f7c600;
   outline-offset: 4px;
@@ -59,6 +62,7 @@ a:focus-visible,
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .logo {
@@ -72,10 +76,19 @@ a:focus-visible,
   display: block;
 }
 
-.nav-link {
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.nav-link,
+.language-btn {
   color: white;
   text-decoration: none;
   border: 2px solid white;
+  background-color: transparent;
   padding: 0.6rem 1rem;
   border-radius: 999px;
   font-weight: bold;
@@ -83,7 +96,9 @@ a:focus-visible,
 }
 
 .nav-link:hover,
-.nav-link:focus-visible {
+.nav-link:focus-visible,
+.language-btn:hover,
+.language-btn:focus-visible {
   background-color: white;
   color: #0068b5;
 }
@@ -100,6 +115,10 @@ a:focus-visible,
   font-weight: bold;
   color: #7ed3f7;
   margin-bottom: 1rem;
+}
+
+.dark-eyebrow {
+  color: #0068b5;
 }
 
 .hero h1 {
@@ -239,13 +258,176 @@ a:focus-visible,
   padding-top: 1rem;
 }
 
+/* THREE-COLUMN BOOTSTRAP SECTION */
+
+.info-section {
+  background-color: white;
+}
+
+.info-section h2,
+.accordion-section h2,
+.newsletter-section h2 {
+  color: #0068b5;
+  font-weight: bold;
+}
+
+.info-card {
+  background-color: #f4f7fb;
+  border-radius: 20px;
+  padding: 2rem;
+  border-top: 6px solid #00a3e0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover,
+.info-card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 32px rgba(0, 104, 181, 0.18);
+}
+
+.info-icon {
+  display: inline-block;
+  font-size: 2.5rem;
+  color: #0068b5;
+  margin-bottom: 1rem;
+}
+
+.info-card h3 {
+  color: #003c71;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.learn-more {
+  color: #0068b5;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.learn-more:hover,
+.learn-more:focus-visible {
+  text-decoration: underline;
+}
+
+/* ACCORDION SECTION */
+
+.accordion-section {
+  background-color: #eef6fb;
+}
+
+.accordion-button {
+  font-weight: bold;
+  color: #003c71;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #dbeafe;
+  color: #003c71;
+}
+
+/* NEWSLETTER FORM */
+
+.newsletter-section {
+  background-color: white;
+}
+
+.newsletter-box {
+  background:
+    linear-gradient(rgba(0, 104, 181, 0.93), rgba(0, 49, 83, 0.95));
+  color: white;
+  border-radius: 24px;
+  padding: 3rem;
+}
+
+.newsletter-box h2 {
+  color: white;
+}
+
+.newsletter-box .form-label,
+.newsletter-box .form-check-label {
+  font-weight: bold;
+}
+
+.subscribe-btn {
+  background-color: white;
+  color: #0068b5;
+  border: 2px solid white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+}
+
+.subscribe-btn:hover,
+.subscribe-btn:focus-visible {
+  background-color: #f7c600;
+  border-color: #f7c600;
+  color: #003c71;
+}
+
 /* FOOTER */
 
-footer {
+.site-footer {
   background-color: #003c71;
   color: white;
-  text-align: center;
-  padding: 2rem;
+  padding: 2rem 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-footer a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  text-decoration: underline;
+}
+
+/* RTL SUPPORT */
+
+html[dir="rtl"] body {
+  text-align: right;
+}
+
+html[dir="rtl"] .navbar,
+html[dir="rtl"] .footer-content {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav-actions {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .timeline {
+  direction: rtl;
+}
+
+html[dir="rtl"] .timeline-card {
+  direction: rtl;
+}
+
+html[dir="rtl"] .skip-link {
+  left: auto;
+  right: 1rem;
 }
 
 /* REDUCED MOTION */
@@ -264,7 +446,9 @@ footer {
 
   .timeline-card:hover,
   .timeline-card:focus-within,
-  .timeline-card:focus-visible {
+  .timeline-card:focus-visible,
+  .info-card:hover,
+  .info-card:focus-within {
     transform: none;
   }
 }
@@ -278,11 +462,12 @@ footer {
   }
 
   .navbar {
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-actions {
+    width: 100%;
   }
 
   .hero-content {
@@ -323,5 +508,20 @@ footer {
   .timeline-card:focus-within,
   .timeline-card:focus-visible {
     transform: none;
+  }
+
+  .newsletter-box {
+    padding: 2rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  html[dir="rtl"] .navbar,
+  html[dir="rtl"] .footer-content {
+    flex-direction: column;
+    align-items: flex-end;
   }
 }
